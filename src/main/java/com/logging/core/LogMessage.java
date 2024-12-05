@@ -11,6 +11,15 @@ public class LogMessage {
     private final Map<String, Object> metadata;
     private final String loggerName;
 
+    // Default constructor for deserialization
+    public LogMessage() {
+        this.message = "";
+        this.level = LogLevel.INFO;
+        this.timestamp = Instant.now();
+        this.metadata = new HashMap<>();
+        this.loggerName = "";
+    }
+
     public LogMessage(String message, LogLevel level, String loggerName) {
         this.message = message;
         this.level = level;

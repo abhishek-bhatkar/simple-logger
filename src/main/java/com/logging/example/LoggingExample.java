@@ -15,10 +15,11 @@ public class LoggingExample {
             defaultLogger.error("This is an error message");
 
             // Example 2: Configured logger with JSON formatting and file output
+            String logPath = System.getProperty("user.dir") + "/logs/application.log";
             LogConfig config = LogConfig.builder()
                     .setMinimumLevel(LogLevel.DEBUG)
                     .setFormatter(new JsonFormatter())
-                    .addOutput(new FileOutput("logs/application.log"))
+                    .addOutput(new FileOutput(logPath))
                     .build();
 
             Logger configuredLogger = Logger.getLogger("ConfiguredLogger", config);
@@ -29,6 +30,7 @@ public class LoggingExample {
 
         } catch (Exception e) {
             System.err.println("Error in logging example: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

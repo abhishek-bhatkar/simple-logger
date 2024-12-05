@@ -54,7 +54,14 @@ public class LogConfig {
         }
 
         public Builder addOutput(LogOutput output) {
+            config.outputs.clear(); // Clear default outputs
             config.outputs.add(output);
+            return this;
+        }
+
+        public Builder addOutputs(List<LogOutput> outputs) {
+            config.outputs.clear(); // Clear default outputs
+            config.outputs.addAll(outputs);
             return this;
         }
 
