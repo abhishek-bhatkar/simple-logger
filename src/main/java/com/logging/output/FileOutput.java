@@ -1,15 +1,20 @@
 package com.logging.output;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
 
 public class FileOutput implements LogOutput {
     private final BufferedWriter writer;
 
-    public FileOutput(Path logFile) throws IOException {
-        this.writer = new BufferedWriter(new FileWriter(logFile.toFile(), true));
+    public FileOutput(String logFilePath) throws IOException {
+        File logFile = new File(logFilePath);
+        // Create parent directories if they don't exist
+        if (logFile.getParentFile() != null) {
+            logFile.getParentFile().mkdirs();
+        }
+        this.writer = new BufferedWriter(new FileWriter(logFile, true));
     }
 
     @Override

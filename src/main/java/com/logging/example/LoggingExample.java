@@ -6,8 +6,6 @@ import com.logging.core.LogLevel;
 import com.logging.formatter.JsonFormatter;
 import com.logging.output.FileOutput;
 
-import java.nio.file.Path;
-
 public class LoggingExample {
     public static void main(String[] args) {
         try {
@@ -20,7 +18,7 @@ public class LoggingExample {
             LogConfig config = LogConfig.builder()
                     .setMinimumLevel(LogLevel.DEBUG)
                     .setFormatter(new JsonFormatter())
-                    .addOutput(new FileOutput(Path.of("application.log")))
+                    .addOutput(new FileOutput("logs/application.log"))
                     .build();
 
             Logger configuredLogger = Logger.getLogger("ConfiguredLogger", config);
